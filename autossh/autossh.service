@@ -1,0 +1,12 @@
+[Unit]
+Description=Keeps a tunnel open
+After=network.target
+
+[Service]
+User=pi
+ExecStart=/usr/bin/autossh -M 2222 -N -i PATH_TO_IDENTITYFILE -R 4300:localhost:22 USER@IP -o "StrictHostKeyChecking=no"
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
